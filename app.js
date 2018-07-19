@@ -37,7 +37,7 @@ app.use(bodyParser.urlencoded({'extended' : 'true'}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use('/', itemsRoutes)
+app.use('', itemsRoutes)
 /* The above line is for mounting the router on the app. Meaning whenever, I am going to  localhost:5000 - itemsRoutes route will be rendered. app.use() is intended for binding middleware to my application. The path is a "mount" or "prefix" path and limits the middleware to only apply to any paths requested that begin with it.
 
 In other words it means, I want localhost:5000 route to go and mount itemsRoutes
