@@ -1,10 +1,14 @@
 const express = require('express');
-const Routes = express.Router();
+const router = express.Router();
 
+// Item model
 const Item = require('../../models/Item')
 
-router.get('/', (req, res) +> {
+router.get('/', (req, res, next) => {
     Item.find()
         .sort({ date: -1 })
         .then(items => res.json(items));
+        res.render('index', { title: 'Hello Paul' })
 })
+
+module.exports = router;
