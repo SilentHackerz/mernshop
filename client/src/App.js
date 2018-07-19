@@ -16,6 +16,7 @@ class App extends Component {
         <Provider store={store}>
         <div className="App">
           <AppNavbar />
+          <ShoppingList />
           <Container>
 
             <h1>Hi Paul</h1>
