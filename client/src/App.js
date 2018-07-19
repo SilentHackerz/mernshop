@@ -13,7 +13,7 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-        <Provider store={store}>
+        // <Provider store={store}>
         <div className="App">
           <AppNavbar />
           <ShoppingList />
@@ -22,7 +22,7 @@ class App extends Component {
             <h1>Hi Paul</h1>
           </Container>
         </div>
-      </Provider>
+    //   </Provider>
     );
   }
 }

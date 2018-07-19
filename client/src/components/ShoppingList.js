@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import { Container, ListGroup, ListGroupItems, Button } from 'reactstrap'
+import React, { Component } from 'react';
+import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import uuid from 'uuid';
@@ -29,13 +30,35 @@ export default class ShoppingList extends Component {
             onClick={() => {
                 const name = prompt('Enter Item');
                 if (name) {
-                    this.setState( state => {
+                    this.setState( state => ({
                         // Add this new item to the existing array of items with spread operator
                         items: [...items, {id: uuid(), name }]
-                    })
+                    }))
                 }
             }}
-        >Add Item</Button>
+        >Add Item
+        </Button>
+        <ListGroup>
+            <TransitionGroup className="shopping-list">
+                {items.map(({ id, name }) => (
+                    <CSSTransition key={id} timeout={500} >
+                        <ListGroupItem>
+                            <Button
+                                className="remove-btn"
+                                color="danger"
+                                size="sm"
+                                onClick={() => {
+                                    this.setState(state => ({
+                                        items: state.items.filter(item => item.id !== id)
+                                    }));
+                                }}
+                                >&times;</Button>
+                                {name}
+                        </ListGroupItem>
+                    </CSSTransition>
+                ))}
+            </TransitionGroup>
+        </ListGroup>
       </Container>
     )
   }
