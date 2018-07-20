@@ -19,3 +19,21 @@
     opacity: 0.01;
     transition: opacity 1000ms ease-in;
   }
+
+/* The  above is an example of applying multiple classes with 'classNames' prop from CSSTransition module of 'react-transition-group'. This is a convention based on the classNames prop. I am hooking to these classes above in the ShoppingList component with classNames="fade"
+
+Official Doc - http://reactcommunity.org/react-transition-group/
+
+
+http://reactcommunity.org/react-transition-group/css-transition/#CSSTransition-prop-classNames
+
+classNames="fade" applies fade-enter, fade-enter-active, fade-enter-done, fade-exit, fade-exit-active, fade-exit-done, fade-appear, and fade-appear-active.
+
+https://blog.prototypr.io/using-reactcsstransitiongroup-for-enter-exit-animations-ea100d68e72f
+
+TransitionGroup sends a few important props to let our program know how it should deal with the transition. I tell the CSSTransitionGroup what is the name of the transition that it will be using to enter and exit all of the child elements that will be created and destroyed. By referencing the fade transition, we get access to a few important CSS selectors that allow us to write our desired transition animation.
+
+If a new item is added within our CSSTransitionGroup it will receive the fade-enter CSS class and next the fade-enter-active CSS class added in the next tick. We want to the opacity to be set at 0 when the component is added to the DOM and then it will transition to opacity: 1 over the duration of our transition.
+
+By wrapping all of our ShoppingList in the TransitionGroup my defined transitions will be applied whenever a new component is added, but only to the component that is being changed.
+*/
