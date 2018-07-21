@@ -86,7 +86,7 @@ export default connect(
 /* In this line above < items: [...items, {id: uuid(), name }]  > the part for name is actually < name : name >
 But with destructuring, since both side is same, I am just using name
 
-connect() and mapStateToProps()
+EXPLANATION ON - connect() and mapStateToProps()
 
 To change data, we need to dispatch an action to store.
 
