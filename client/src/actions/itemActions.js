@@ -7,6 +7,13 @@ export const getItems = () => {
     }
 }
 
+export const deleteItem = id => {
+    return {
+        type: DELETE_ITEM,
+        payload: id
+    }
+}
+
 /* So, getItem is the action, and when its invoked or run, then it will dispatch this action type, which is 'GET_ITEMS' to the reducers. And then in the reducer will just return the state, and bring it into our component.
 
 Because the itemReducer.js has the following form

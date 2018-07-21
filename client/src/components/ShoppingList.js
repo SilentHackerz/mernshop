@@ -4,7 +4,9 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import uuid from 'uuid';
-import { getItems } from '../actions/itemActions'
+
+// Bring in actions that I will use to connect to this component
+import { getItems, deleteItem } from '../actions/itemActions'
 
 class ShoppingList extends Component {
 
@@ -21,6 +23,11 @@ Because the itemReducer.js has the following form
 
 componentDidMount () {
     this.props.getItems()
+}
+
+// functon to delete an item
+onDeleteClick = id => {
+    this.props.deleteItem(id);
 }
 
 
@@ -57,11 +64,7 @@ componentDidMount () {
                                 className="remove-btn"
                                 color="danger"
                                 size="sm"
-                                onClick={() => {
-                                    this.setState(state => ({
-                                        items: state.items.filter(item => item.id !== id)
-                                    }));
-                                }}
+                                onClick={this.onDeleteClick.bind(this, id)}
                                 >&times;</Button>
                                 {name}
                         </ListGroupItem>
@@ -90,9 +93,10 @@ const mapStateToProps = state => ({
     item: state.item
 })
 
+// Any action that I have brought in at the top here in this component, I have to connect with this compoenent
 export default connect(
     mapStateToProps,
-    { getItems }
+    { getItems, deleteItem }
 )(ShoppingList)
 
 /* In this line above < items: [...items, {id: uuid(), name }]  > the part for name is actually < name : name >
