@@ -6,3 +6,14 @@ export const getItems = () => {
         type: GET_ITEMS
     }
 }
+
+/* So, getItem is the action, and when its invoked or run, then it will dispatch this action type, which is 'GET_ITEMS' to the reducers. And then in the reducer will just return the state, and bring it into our component.
+
+Because the itemReducer.js has the following form
+
+ switch(action.type) {
+        case GET_ITEMS:
+            return {
+                ...state
+            }
+*/

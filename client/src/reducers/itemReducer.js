@@ -20,3 +20,7 @@ export default function (state = initialState, action) {
             return state;
     };
 }
+
+/* For checking uuid is working, manually give some dummy data here in the above. Later it will come from database
+
+A UUID (Universal Unique Identifier) is a 128-bit number used to uniquely identify some object or entity on the Internet. Depending on the specific mechanisms used, a UUID is either guaranteed to be different or is, at least, extremely likely to be different from any other UUID generated until 3400 A.D. */

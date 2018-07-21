@@ -22,7 +22,7 @@ class App extends Component {
                 <h1>Hi Paul</h1>
             </Container>
             </div>
-    //   </Provider>
+       </Provider>
     );
   }
 }
