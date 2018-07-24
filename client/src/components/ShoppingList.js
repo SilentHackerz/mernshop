@@ -33,7 +33,7 @@ onDeleteClick = id => {
 
   render() {
 
-      // And note after implementing redux, on the RHS below, I will no more get the items from the state directly by doing this.state. Instead, I will do this.props.item . Because after redux, I have got rid of component state, instead getting my state from reducers from out store. And mapStateToProps has mapped those states to 'item' props.
+      // And note after implementing redux, on the RHS below, I will no more get the items from the state directly by doing this.state. Instead, I will do this.props.item . Because after redux, I have got rid of component state, instead getting my state from reducers from store. And mapStateToProps has mapped those states to 'item' props.
       // Also, use destructuring to declare variable items. Because the actual code would have been
       // this.props.item.items  , where 'items' is the actual array.
 
@@ -41,20 +41,6 @@ onDeleteClick = id => {
 
     return (
       <Container>
-        <Button
-            color="dark"
-            style={{marginBottom: '2em'}}
-            onClick={() => {
-                const name = prompt('Enter Item');
-                if (name) {
-                    this.setState( state => ({
-                        // Add this new item to the existing array of items with spread operator
-                        items: [...items, {id: uuid(), name }]
-                    }))
-                }
-            }}
-        >Add Item
-        </Button>
         <ListGroup>
             <TransitionGroup className="shopping-list">
                 {items.map(({ id, name }) => (
@@ -77,7 +63,6 @@ onDeleteClick = id => {
   }
 }
 
-
 // When I bring in any action from redux, e.g. getItems its going to be stored as prop. And hence I am setting the PropTypes of getItems() .
 // And the other prop 'item' is coming from the object that is returned from mapStateToProps() - Because, as noted below, mapsStateToProps() has to return an object, whose keys will then be passed on as the props of the component they are connected to (ShoppingList in this case).
 
@@ -88,12 +73,12 @@ ShoppingList.PropTypes = {
 
 // what mapStateToProps() does is, it allows us to take our item state (from itemReducer.js ) and turn this into a component property so I can use it in this ShoppingList component - like e.g.
 //this.props.items
-// mapStateToProps() has the Store state as an argument and its used to link the component with certain part of the store state . In returned object from the function below, I am using 'item' as key because thats what I am calling it in my rootReducer (./reducers/index.js)
+// mapStateToProps() has the Store state as an argument and its used to link the component with certain part of the store state . In returned object from mapStateToProps() below, I am using 'item' as key because thats what I am calling it in my rootReducer (./reducers/index.js)
 const mapStateToProps = state => ({
     item: state.item
 })
 
-// Any action that I have brought in at the top here in this component, I have to connect with this compoenent
+// Any action that I have brought in at the top here in this component, I have to connect with this component
 export default connect(
     mapStateToProps,
     { getItems, deleteItem }

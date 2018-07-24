@@ -16,9 +16,9 @@ class App extends Component {
         <Provider store={store}>
             <div className="App">
             <AppNavbar />
-            <ShoppingList />
             <Container>
-
+                <ItemModal />
+                <ShoppingList />
                 <h1>Hi Paul</h1>
             </Container>
             </div>
@@ -34,4 +34,5 @@ https://www.sohamkamani.com/blog/2017/03/31/react-redux-connect-explained/
 
 If we want to link our React application with the redux store, we first have to let our app know that this store exists. This is where we come to the first major part of the react-redux library, which is the Provider.
 
-Provider is a React component given to us by the “react-redux” library. It serves just one purpose : to “provide” the store to its child components. */
+Provider is a React component given to us by the “react-redux” library. It serves just one purpose : to “provide” the store to its child components.
+*/
