@@ -1,12 +1,17 @@
 import axios from 'axios';
 import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, ITEMS_LOADING } from './types';
 
-export const getItems = () => {
-    return {
-        type: GET_ITEMS
-    }
+export const getItems = () => dispatch => {
+    dispatch(setItemsLoading());
+    axios.get('/api/items').then(res => {
+        dispatch({
+            type: GET_ITEMS,
+            payload: res.data
+        })
+    })
 }
 
+// note on dispatch() >> I am using dispatch() to send the type along with the data that we get from the axios request to the backend
 
 /* So, getItem is the action, and when its invoked or run, then it will dispatch this action type, which is 'GET_ITEMS' to the reducers. And then in the reducer will just return the state, and bring it into our component.
 
@@ -26,9 +31,17 @@ export const deleteItem = id => {
     }
 }
 
-export const addItem = item => {
+export const addItem = item => dispatch => {
+    axios.post('/api/items', item).then(res => {
+        dispatch({
+            type: ADD_ITEM,
+            payload: res.data
+        })
+    })
+}
+
+export const setItemsLoading = item => {
     return {
-        type: ADD_ITEM,
-        payload: item
+        type: ITEMS_LOADING
     }
 }
