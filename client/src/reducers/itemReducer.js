@@ -40,8 +40,8 @@ So, after we make the request, when the items load (meaning I get the data / pay
 
 And I can see this effect live in Redux dev-tool, under the Diff > Tree the loading will turn from true to false after I get the items
 
+B> for case ADD_ITEM >> action.payload is the new item and its going to get added to items array along with the rest of them items (which is ...state.items)
+
 B> In above, I am using the spread operator of 3 dots for returning the states ( ...states ) because I can not mutate the state
 
-C> Initially for checking uuid is working, manually give some dummy data here in the above, which I shall delete once my backend is fully configured. Later it will come from database
-
-A UUID (Universal Unique Identifier) is a 128-bit number used to uniquely identify some object or entity on the Internet. Depending on the specific mechanisms used, a UUID is either guaranteed to be different or is, at least, extremely likely to be different from any other UUID generated until 3400 A.D. */
+*/

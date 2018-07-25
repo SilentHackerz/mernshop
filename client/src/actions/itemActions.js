@@ -19,7 +19,10 @@ The main function (addItem) dispatches another function ( setItemsLoading ). Thi
 
 This double function strategy allows us to wait for an asynchronous operation (like fetching data) to complete, and then the action is returned by the thunk.
 
-The adjusted order, including reducers, is: dispatch ➡️ action creator ➡️ thunk ➡️ action ➡️ reducer. */
+ The plain data flows in a typical Redux (dispatch(action) -> reducer -> new state -> re-render
+
+The adjusted order, including reducers, is: dispatch ➡️ action creator ➡️ thunk ➡️ action ➡️ reducer.
+*/
 
 /* So, getItem is the action, and when its invoked or run, then it will dispatch this action type, which is 'GET_ITEMS' to the reducers. And then in the reducer will just return the state, and bring it into our component.
 
@@ -41,13 +44,15 @@ export const deleteItem = id => {
 
 // Note the pattern is one of function currying - i.e. one function returning another function while taking single or no argument
 export const addItem = item => dispatch => {
-    axios.post('/api/items', item).then(res => {
+    axios.post('/api/items', item)
+    .then(res => {
         dispatch({
             type: ADD_ITEM,
             payload: res.data
         })
     })
 }
+// payload is the new item. from here the post hits my backend routes router.post which saves this res.data into mongo database.
 
 export const setItemsLoading = item => {
     return {

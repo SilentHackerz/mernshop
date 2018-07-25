@@ -3,7 +3,6 @@ import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import uuid from 'uuid';
 
 // Bring in actions that I will use to connect to this component
 import { getItems, deleteItem } from '../actions/itemActions'
@@ -85,9 +84,7 @@ export default connect(
     { getItems, deleteItem }
 )(ShoppingList)
 
-/* In this line above < items: [...items, {id: uuid(), name }]  > the part for name is actually < name : name >
-But with destructuring, since both side is same, I am just using name
-
+/*
 EXPLANATION ON - connect() method and it takes mapStateToProps() as its first argument.
 
 To change data, we need to dispatch an action to store.
