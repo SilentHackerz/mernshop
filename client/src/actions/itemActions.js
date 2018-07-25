@@ -3,17 +3,19 @@ import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, ITEMS_LOADING } from './types';
 
 export const getItems = () => dispatch => {
 
-    dispatch(setItemsLoading());
+    dispatch(setItemsLoading()); // because I want the loading to be set to true for now.
 
-    axios.get('/api/items').then(res => {
-        dispatch({
-            type: GET_ITEMS,
-            payload: res.data
+    axios.get('/api/items')
+        .then(res => {
+            dispatch({
+                type: GET_ITEMS,
+                payload: res.data
         })
     })
 }
 
-/* note on dispatch() >> I am using dispatch() to send the type along with the data that we get from the axios request to the backend. The main function (addItem) dispatches another function ( setItemsLoading ). This second function is called a thunk, and it returns the object/action.  the context of redux-thunk, a thunk is a second function that performs delayed logic by being asynchronously returned by a first function.
+/* note on dispatch() >> I am using dispatch() to send the type along with the data that we get from the axios request to the backend.
+The main function (addItem) dispatches another function ( setItemsLoading ). This second function is called a thunk, and it returns the object/action.  the context of redux-thunk, a thunk is a second function that performs delayed logic by being asynchronously returned by a first function.
 
 This double function strategy allows us to wait for an asynchronous operation (like fetching data) to complete, and then the action is returned by the thunk.
 
