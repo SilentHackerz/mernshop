@@ -77,6 +77,7 @@ ShoppingList.PropTypes = {
 const mapStateToProps = state => ({
     item: state.item
 })
+// Also in above note, when returning an Object, I will have to wrap it in parentheses. Hence the parenthesis before the curly braces
 
 // Any action that I have brought in at the top here in this component, I have to connect with this component
 export default connect(
