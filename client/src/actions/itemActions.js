@@ -35,13 +35,6 @@ Because the itemReducer.js has the following form
             }
 */
 
-export const deleteItem = id => {
-    return {
-        type: DELETE_ITEM,
-        payload: id
-    }
-}
-
 // Note the pattern is one of function currying - i.e. one function returning another function while taking single or no argument
 export const addItem = item => dispatch => {
     axios.post('/api/items', item)
@@ -53,6 +46,16 @@ export const addItem = item => dispatch => {
     })
 }
 // payload is the new item. from here the post hits my backend routes router.post which saves this res.data into mongo database.
+
+
+export const deleteItem = id => dispatch => {
+    axios.delete(`/api/items/${id}`).then(res =>
+      dispatch({
+        type: DELETE_ITEM,
+        payload: id
+      })
+    );
+  };
 
 export const setItemsLoading = item => {
     return {
