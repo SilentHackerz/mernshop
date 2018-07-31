@@ -19,12 +19,14 @@ The main function (addItem) dispatches another function ( setItemsLoading ). Thi
 
 This double function strategy allows us to wait for an asynchronous operation (like fetching data) to complete, and then the action is returned by the thunk.
 
- The plain data flows in a typical Redux (dispatch(action) -> reducer -> new state -> re-render
+The plain data flows in a typical Redux - dispatch(action) -> reducer -> new state -> re-render
 
 The adjusted order, including reducers, is: dispatch ➡️ action creator ➡️ thunk ➡️ action ➡️ reducer.
 */
 
-/* So, getItem is the action, and when its invoked or run, then it will dispatch this action type, which is 'GET_ITEMS' to the reducers. And then in the reducer will just return the state, and bring it into our component.
+/* So, getItems() function is the action, and when its invoked or run, then it will dispatch this action type, which is 'GET_ITEMS' to the reducers. And then in the reducer I will just return the state ( with spread operator ...state), and bring it into my component. And the way, I invoke this function in my reducer is by doing the ``action.type`` and then applying various cases. And because of the mechanism of ``dispatch`` function, when I apply ``action.type`` and case ``GET_ITEM`` I dispatch ``getItems()`` function from my action to reducer.
+
+By the mechanism of dispatch() - I am using dispatch() to send the type along with the data that we get from the axios request to the backend. And note, that the main function getItem() dispatches another function ( setItemsLoading ). This second function is called a thunk, and it returns the object/action. In the context of redux-thunk, a thunk is a second function that performs delayed logic by being asynchronously returned by a first function.
 
 Because the itemReducer.js has the following form
 

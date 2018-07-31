@@ -40,7 +40,7 @@ So, after we make the request, when the items load (meaning I get the data / pay
 
 And I can see this effect live in Redux dev-tool, under the Diff > Tree the loading will turn from true to false after I get the items
 
-B> for case ADD_ITEM >> action.payload is the new item and its going to get added to items array along with the rest of them items (which is ...state.items)
+B> for case ADD_ITEM >> action.payload is the new item and its going to get added to items array along with the rest of the items (which is ...state.items)
 
 B> In above, I am using the spread operator of 3 dots for returning the states ( ...states ) because I can not mutate the state
 
