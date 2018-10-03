@@ -11,7 +11,7 @@ const itemsRoutes = require('./routes/api/items')
 const app = express();
 
 // mongodb database connection (standard boilerplate mongo connection code)
-mongoose.connect('mongodb://localhost:27017/mern-item-practice', {useNewUrlParser: true})
+mongoose.connect('mongodb://zain:abc123@ds121593.mlab.com:21593/zain', {useNewUrlParser: true})
     .then(() => console.log("Mongodb connection established"))
     .catch((err) => console.error(err))
 
