@@ -19,7 +19,7 @@ class App extends Component {
             <Container>
                 <ItemModal />
                 <ShoppingList />
-                <h1>Hi Paul</h1>
+                <h1>Hey Ayub</h1>
             </Container>
             </div>
        </Provider>
